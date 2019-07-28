@@ -16,11 +16,9 @@ defmodule SnitchWeb.Router do
   scope "/", SnitchWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/", ChannelController, :new
+    resources "/channels", ChannelController do
+      post "/create_stream_key", ChannelController, :create_stream_key
+    end
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", SnitchWeb do
-  #   pipe_through :api
-  # end
 end

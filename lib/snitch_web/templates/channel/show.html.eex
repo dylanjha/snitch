@@ -1,0 +1,19 @@
+<h1><%= @channel.name %></h1>
+<ul>
+  <li>
+    <strong>Stream key:</strong>
+    <%= @channel.stream_key %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @channel.name %>
+  </li>
+
+  <li>
+    <strong>Slug:</strong>
+    <%= @channel.slug %>
+  </li>
+
+  <span><%= link "Create stream key", to: Routes.channel_channel_path(@conn, :create_stream_key, @channel), method: :post %></span>
+</ul>
