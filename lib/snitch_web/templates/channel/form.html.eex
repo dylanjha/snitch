@@ -5,11 +5,13 @@
     </div>
   <% end %>
 
-  <%= label f, :name %>
-  <%= text_input f, :name %>
-  <%= error_tag f, :name %>
+  <div class="form-group mt-4">
+    <%= label f, :name, "Channel Name" %>
+    <%= text_input f, :name, placeholder: "My Awesome Channel", class: "form-control" %>
+    <%= error_tag f, :name %>
+  </div>
 
-  <div>
-    <%= submit "Save" %>
+  <div class="mt-4">
+    <%= submit "Save", class: "btn btn-primary btn-lg" %>
   </div>
 <% end %>

@@ -17,7 +17,6 @@
       <td><%= channel.stream_key %></td>
       <td><%= channel.name %></td>
       <td><%= channel.slug %></td>
-      <td><%= channel.mux_resource %></td>
 
       <td>
         <%= link "Show", to: Routes.channel_path(@conn, :show, channel) %>

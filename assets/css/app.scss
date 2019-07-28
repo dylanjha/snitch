@@ -2,3 +2,45 @@
 
 @import "custom";
 @import '../node_modules/bootstrap/scss/bootstrap';
+
+$lavender-brush: #fff0f5;
+$aquamarine: #7fffd4;
+
+.container-fluid {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.flash.alert {
+  margin-bottom: 0;
+  padding: 25px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.action-box {
+  padding: 60px;
+  max-width: 600px;
+  margin: 30px auto 0 auto;
+  background: $aquamarine;
+  border-radius: 4px;
+}
+
+.new-channel-form {
+}
+
+.channel-create-stream-key {
+}
+
+.page-channel-new {
+  background: $lavender-brush;
+  padding: 80px;
+  min-height: 1000px;
+}
+
+.page-channel-show {
+  background: $lavender-brush;
+  padding: 80px;
+  min-height: 1000px;
+}
