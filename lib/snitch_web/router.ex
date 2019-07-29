@@ -21,4 +21,9 @@ defmodule SnitchWeb.Router do
       post "/create_stream_key", ChannelController, :create_stream_key
     end
   end
+
+  scope "/", SnitchWeb do
+    pipe_through :api
+    post "/webhooks/mux", WebhookController, :mux
+  end
 end

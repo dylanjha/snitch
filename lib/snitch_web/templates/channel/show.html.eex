@@ -4,6 +4,9 @@
       <h1><%= @channel.name %></h1>
       <div class="mt-5">
         <p class="mb-5">
+          status: <%= @channel.mux_resource["status"] %>
+        </p>
+        <p class="mb-5">
           This is how you start streaming. Enter these details into your streaming software. When you start streaming the content will be recorded and live right here.
         </p>
         <form>
@@ -17,7 +20,7 @@
           </div>
       </div>
     </div>
-  <%= else %>
+  <% else %>
     <div class="action-box channel-create-stream-key">
       <h1><%= @channel.name %></h1>
       <div class="mt-5">

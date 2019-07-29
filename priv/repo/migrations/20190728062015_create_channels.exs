@@ -7,6 +7,7 @@ defmodule Snitch.Repo.Migrations.CreateChannels do
       add :name, :string
       add :slug, :string
       add :mux_resource, :map
+      add :mux_live_stream_id, :string
       timestamps()
     end
 
