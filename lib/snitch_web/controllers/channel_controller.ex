@@ -16,8 +16,9 @@ defmodule SnitchWeb.ChannelController do
 
   def create(conn, %{"channel" => channel_params}) do
     {:ok, name} = Map.fetch(channel_params, "name")
-    slug = Slugger.slugify_downcase name
-    channel_params =  Map.put(channel_params, "slug", slug)
+    slug = Slugger.slugify_downcase(name)
+    channel_params = Map.put(channel_params, "slug", slug)
+
     case Channels.create_channel(channel_params) do
       {:ok, channel} ->
         conn
@@ -25,23 +26,32 @@ defmodule SnitchWeb.ChannelController do
         |> redirect(to: Routes.channel_path(conn, :show, channel))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        IO.inspect changeset
+        IO.inspect(changeset)
         render(conn, "new.html", changeset: changeset)
     end
   end
 
   def create_stream_key(conn, %{"channel_id" => id}) do
     channel = Channels.get_channel!(id)
+
     if channel["stream_key"] do
       conn
-        |> put_flash(:error, "Already have a stream key")
-        |> redirect(to: Routes.channel_path(conn, :show, channel))
+      |> put_flash(:error, "Already have a stream key")
+      |> redirect(to: Routes.channel_path(conn, :show, channel))
     else
-      case Mux.Video.LiveStreams.create(Mux.client(), %{playback_policy: "public", new_asset_settings: %{playback_policy: "public"}}) do
+      case Mux.Video.LiveStreams.create(Mux.client(), %{
+             playback_policy: "public",
+             new_asset_settings: %{playback_policy: "public"}
+           }) do
         {:ok, live_stream, _env} ->
           stream_key = live_stream["stream_key"]
           live_stream_id = live_stream["id"]
-          case Channels.update_channel(channel, %{stream_key: stream_key, mux_resource: live_stream, mux_live_stream_id: live_stream_id}) do
+
+          case Channels.update_channel(channel, %{
+                 stream_key: stream_key,
+                 mux_resource: live_stream,
+                 mux_live_stream_id: live_stream_id
+               }) do
             {:ok, channel} ->
               conn
               |> put_flash(:info, "Live stream is created")
@@ -52,8 +62,10 @@ defmodule SnitchWeb.ChannelController do
               |> put_flash(:error, "Error saving stream key")
               |> redirect(to: Routes.channel_path(conn, :show, channel))
           end
+
         {:error, _, err} ->
-          IO.inspect err
+          IO.inspect(err)
+
           conn
           |> put_flash(:error, "Error creating live stream")
           |> redirect(to: Routes.channel_path(conn, :show, channel))
@@ -63,6 +75,7 @@ defmodule SnitchWeb.ChannelController do
 
   def show(conn, %{"id" => id}) do
     channel = Channels.get_channel!(id)
+
     if channel.mux_resource["status"] == "active" do
       render(conn, "show_active.html", channel: channel)
     else

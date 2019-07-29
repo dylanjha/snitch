@@ -3,8 +3,18 @@ defmodule SnitchWeb.ChannelControllerTest do
 
   alias Snitch.Channels
 
-  @create_attrs %{mux_resource: %{}, name: "some name", slug: "some slug", stream_key: "some stream_key"}
-  @update_attrs %{mux_resource: %{}, name: "some updated name", slug: "some updated slug", stream_key: "some updated stream_key"}
+  @create_attrs %{
+    mux_resource: %{},
+    name: "some name",
+    slug: "some slug",
+    stream_key: "some stream_key"
+  }
+  @update_attrs %{
+    mux_resource: %{},
+    name: "some updated name",
+    slug: "some updated slug",
+    stream_key: "some updated stream_key"
+  }
   @invalid_attrs %{mux_resource: nil, name: nil, slug: nil, stream_key: nil}
 
   def fixture(:channel) do
@@ -75,6 +85,7 @@ defmodule SnitchWeb.ChannelControllerTest do
     test "deletes chosen channel", %{conn: conn, channel: channel} do
       conn = delete(conn, Routes.channel_path(conn, :delete, channel))
       assert redirected_to(conn) == Routes.channel_path(conn, :index)
+
       assert_error_sent 404, fn ->
         get(conn, Routes.channel_path(conn, :show, channel))
       end

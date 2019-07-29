@@ -6,8 +6,18 @@ defmodule Snitch.ChannelsTest do
   describe "channels" do
     alias Snitch.Channels.Channel
 
-    @valid_attrs %{mux_resource: %{}, name: "some name", slug: "some slug", stream_key: "some stream_key"}
-    @update_attrs %{mux_resource: %{}, name: "some updated name", slug: "some updated slug", stream_key: "some updated stream_key"}
+    @valid_attrs %{
+      mux_resource: %{},
+      name: "some name",
+      slug: "some slug",
+      stream_key: "some stream_key"
+    }
+    @update_attrs %{
+      mux_resource: %{},
+      name: "some updated name",
+      slug: "some updated slug",
+      stream_key: "some updated stream_key"
+    }
     @invalid_attrs %{mux_resource: nil, name: nil, slug: nil, stream_key: nil}
 
     def channel_fixture(attrs \\ %{}) do

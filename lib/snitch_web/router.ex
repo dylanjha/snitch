@@ -17,6 +17,7 @@ defmodule SnitchWeb.Router do
     pipe_through :browser
 
     get "/", ChannelController, :new
+
     resources "/channels", ChannelController do
       post "/create_stream_key", ChannelController, :create_stream_key
     end

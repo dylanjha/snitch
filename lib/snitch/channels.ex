@@ -22,7 +22,7 @@ defmodule Snitch.Channels do
   end
 
   def find_by_mux_live_stream_id(live_stream_id) do
-    Repo.get_by(Channel, %{ mux_live_stream_id: live_stream_id })
+    Repo.get_by(Channel, %{mux_live_stream_id: live_stream_id})
   end
 
   @doc """
