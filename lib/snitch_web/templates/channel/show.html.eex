@@ -18,6 +18,7 @@
             <label for="stream_key">Stream Key</label>
             <input type="text" disabled name="stream_key" value="<%= @channel.stream_key %>" class="form-control" /> </form>
           </div>
+        </form>
       </div>
     </div>
   <% else %>

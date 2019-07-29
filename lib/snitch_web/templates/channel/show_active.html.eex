@@ -1,0 +1,10 @@
+<div class="page-channel-show">
+  <div class="channel-show-active">
+    <h1>Welcome to <%= @channel.name %></h1>
+    <div class="mt-5">
+      <p class="mb-5">
+        A player should be here
+      </p>
+    </div>
+  </div>
+</div>

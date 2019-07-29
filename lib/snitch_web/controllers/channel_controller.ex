@@ -63,7 +63,11 @@ defmodule SnitchWeb.ChannelController do
 
   def show(conn, %{"id" => id}) do
     channel = Channels.get_channel!(id)
-    render(conn, "show.html", channel: channel)
+    if channel.mux_resource["status"] == "active" do
+      render(conn, "show_active.html", channel: channel)
+    else
+      render(conn, "show.html", channel: channel)
+    end
   end
 
   def edit(conn, %{"id" => id}) do
