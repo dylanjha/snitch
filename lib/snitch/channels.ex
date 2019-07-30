@@ -75,6 +75,12 @@ defmodule Snitch.Channels do
     channel
     |> Channel.changeset(attrs)
     |> Repo.update()
+    |> notify_subs()
+  end
+
+  def notify_subs({:ok, channel}) do
+    Phoenix.PubSub.broadcast(Snitch.PubSub, "channel-updated:#{channel.id}", channel)
+    {:ok, channel}
   end
 
   @doc """

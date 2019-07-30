@@ -76,11 +76,9 @@ defmodule SnitchWeb.ChannelController do
   def show(conn, %{"id" => id}) do
     channel = Channels.get_channel!(id)
 
-    if channel.mux_resource["status"] == "active" do
-      render(conn, "show_active.html", channel: channel)
-    else
-      render(conn, "show.html", channel: channel)
-    end
+    Phoenix.LiveView.Controller.live_render(conn, SnitchWeb.LiveChannelView,
+      session: %{channel: channel}
+    )
   end
 
   def edit(conn, %{"id" => id}) do

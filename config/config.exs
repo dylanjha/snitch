@@ -13,9 +13,12 @@ config :snitch,
 # Configures the endpoint
 config :snitch, SnitchWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "HVwKxjgXYJIcVM6bt7bAJvbedU7O8+MZwP9ushyZwpID3UGxWltPcMSKuGkfyXzf",
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
   render_errors: [view: SnitchWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Snitch.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Snitch.PubSub, adapter: Phoenix.PubSub.PG2],
+  live_view: [
+    signing_salt: System.get_env("SECRET_KEY_BASE")
+  ]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -23,7 +26,9 @@ config :logger, :console,
   metadata: [:request_id]
 
 # Use Jason for JSON parsing in Phoenix
-config :phoenix, :json_library, Jason
+config :phoenix,
+  json_library: Jason,
+  template_engines: [leex: Phoenix.LiveView.Engine]
 
 config :mux,
   access_token_id: System.get_env("MUX_TOKEN_ID"),
