@@ -78,6 +78,23 @@ defmodule Snitch.Channels do
     |> notify_subs()
   end
 
+  def playback_url_for_channel(%Channel{} = channel) do
+    case channel.mux_resource["status"] do
+      "active" ->
+        case channel.mux_resource["playback_ids"] do
+          nil ->
+            nil
+
+          playback_ids ->
+            playback_id = List.first(playback_ids)["id"]
+            "https://stream.mux.com/#{playback_id}.m3u8"
+        end
+
+      _ ->
+        nil
+    end
+  end
+
   def notify_subs({:ok, channel}) do
     Phoenix.PubSub.broadcast(Snitch.PubSub, "channel-updated:#{channel.id}", channel)
     {:ok, channel}

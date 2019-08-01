@@ -3,7 +3,9 @@
     <h1>Welcome to <%= @channel.name %></h1>
     <div class="mt-5">
       <p class="mb-5">
-        A player should be here
+        <video width="100%" height="100%" controls>
+          <source src="<%= Snitch.Channels.playback_url_for_channel(@channel) %>" type="application/x-mpegURL">
+        </video>
       </p>
     </div>
   </div>
