@@ -3,7 +3,7 @@
 Snitch is Twitch, for snitches. This is an out of the box Elixir/Phoenix
 application.
 
-This application uses [Mux Live Stream]
+This application uses [Mux Live Stream](https://mux.com/live) and Phoenix Live View.
 
 ## Getting started
 
