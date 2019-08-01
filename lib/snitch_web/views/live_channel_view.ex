@@ -4,22 +4,36 @@ defmodule SnitchWeb.LiveChannelView do
   def mount(session, socket) do
     channel = session[:channel]
     if connected?(socket), do: SnitchWeb.Endpoint.subscribe("channel-updated:#{channel.id}")
-    {:ok, assign(socket, channel: channel)}
+    playback_url = Snitch.Channels.playback_url_for_channel(channel)
+
+    {
+      :ok,
+      socket
+      |> assign(channel: channel)
+      |> assign(playback_url: playback_url)
+    }
   end
 
   def render(assigns) do
-    channel = assigns[:channel]
+    playback_url = assigns[:playback_url]
 
-    case(channel.mux_resource["status"]) do
-      "active" ->
-        SnitchWeb.ChannelView.render("show_active.html", assigns)
-
-      status ->
+    case(playback_url) do
+      nil ->
         SnitchWeb.ChannelView.render("show.html", assigns)
+
+      _ ->
+        SnitchWeb.ChannelView.render("show_active.html", assigns)
     end
   end
 
   def handle_info(channel, socket) do
-    {:noreply, assign(socket, channel: channel)}
+    playback_url = Snitch.Channels.playback_url_for_channel(channel)
+
+    {
+      :noreply,
+      socket
+      |> assign(channel: channel)
+      |> assign(playback_url: playback_url)
+    }
   end
 end
