@@ -34,7 +34,7 @@ defmodule SnitchWeb.ChannelController do
   def create_stream_key(conn, %{"channel_id" => id}) do
     channel = Channels.get_channel!(id)
 
-    if channel["stream_key"] do
+    if channel.stream_key do
       conn
       |> put_flash(:error, "Already have a stream key")
       |> redirect(to: Routes.channel_path(conn, :show, channel))
@@ -76,9 +76,13 @@ defmodule SnitchWeb.ChannelController do
   def show(conn, %{"id" => id}) do
     channel = Channels.get_channel!(id)
 
-    Phoenix.LiveView.Controller.live_render(conn, SnitchWeb.LiveChannelView,
-      session: %{channel: channel}
-    )
+    if channel.stream_key do
+      Phoenix.LiveView.Controller.live_render(conn, SnitchWeb.LiveChannelView,
+        session: %{channel: channel}
+      )
+    else
+      render(conn, "show_create_stream_key.html", channel: channel)
+    end
   end
 
   def edit(conn, %{"id" => id}) do

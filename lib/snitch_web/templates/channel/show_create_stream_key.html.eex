@@ -1,0 +1,11 @@
+<div class="page-channel-show">
+  <div class="action-box channel-create-stream-key">
+    <h1><%= @channel.name %></h1>
+    <div class="mt-5">
+      <p class="mb-5">
+        First, let's create your stream key. This is the key you will use to start broadcasting.
+      </p>
+      <%= link "Create stream key", to: Routes.channel_channel_path(@conn, :create_stream_key, @channel), method: :post, class: "btn btn-lg btn-primary" %></span>
+    </div>
+  </div>
+</div>
