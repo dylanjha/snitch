@@ -19,9 +19,7 @@
       <td><%= channel.slug %></td>
 
       <td>
-        <%= link "Show", to: Routes.channel_path(@conn, :show, channel) %>
-        <%= link "Edit", to: Routes.channel_path(@conn, :edit, channel) %>
-        <%= link "Delete", to: Routes.channel_path(@conn, :delete, channel), method: :delete, data: [confirm: "Are you sure?"] %>
+        <%= link "Show", to: Routes.channel_path(@conn, :show, channel.slug) %>
       </td>
     </tr>
 <% end %>

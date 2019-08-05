@@ -41,6 +41,10 @@ defmodule Snitch.Channels do
   """
   def get_channel!(id), do: Repo.get!(Channel, id)
 
+  def get_channel_by_slug!(slug) do
+    Repo.get_by!(Channel, %{slug: slug})
+  end
+
   @doc """
   Creates a channel.
 

@@ -19,7 +19,9 @@ defmodule SnitchWeb.Router do
 
     get "/", ChannelController, :new
 
-    resources "/channels", ChannelController do
+    get "/c/:channel_slug", ChannelController, :show
+
+    resources "/channels", ChannelController, only: [:index, :new, :create] do
       post "/create_stream_key", ChannelController, :create_stream_key
     end
   end

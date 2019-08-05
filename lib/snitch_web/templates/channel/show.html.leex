@@ -3,10 +3,20 @@
     <h1><%= @channel.name %></h1>
     <div class="mt-5">
       <p class="mb-5">
-        status: <%= @channel.mux_resource["status"] %>
+        <div class="d-flex align-items-center pt-3 pb-3">
+          <h4> <span class="badge badge-secondary"><%= @channel.mux_resource["status"] %></span></h4>
+          <%= if (@channel.mux_resource["connected"]) do %>
+            <div class="ml-3 spinner-border text-primary" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="text-muted pl-3">
+              Connected... getting your stream
+            </div>
+          <% end %>
+        </div>
       </p>
       <p class="mb-5">
-        This is how you start streaming. Enter these details into your streaming software. When you start streaming the content will be recorded and live right here.
+        Enter these details into your streaming software. When you start streaming the content will be recorded and live right here.
       </p>
       <form>
         <div>

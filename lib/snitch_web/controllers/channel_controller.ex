@@ -23,7 +23,7 @@ defmodule SnitchWeb.ChannelController do
       {:ok, channel} ->
         conn
         |> put_flash(:info, "Channel created successfully.")
-        |> redirect(to: Routes.channel_path(conn, :show, channel))
+        |> redirect(to: Routes.channel_path(conn, :show, channel.slug))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         IO.inspect(changeset)
@@ -37,7 +37,7 @@ defmodule SnitchWeb.ChannelController do
     if channel.stream_key do
       conn
       |> put_flash(:error, "Already have a stream key")
-      |> redirect(to: Routes.channel_path(conn, :show, channel))
+      |> redirect(to: Routes.channel_path(conn, :show, channel.slug))
     else
       case Mux.Video.LiveStreams.create(Mux.client(), %{
              playback_policy: "public",
@@ -55,12 +55,12 @@ defmodule SnitchWeb.ChannelController do
             {:ok, channel} ->
               conn
               |> put_flash(:info, "Live stream is created")
-              |> redirect(to: Routes.channel_path(conn, :show, channel))
+              |> redirect(to: Routes.channel_path(conn, :show, channel.slug))
 
             {:error, %Ecto.Changeset{} = _changeset} ->
               conn
               |> put_flash(:error, "Error saving stream key")
-              |> redirect(to: Routes.channel_path(conn, :show, channel))
+              |> redirect(to: Routes.channel_path(conn, :show, channel.slug))
           end
 
         {:error, _, err} ->
@@ -68,13 +68,13 @@ defmodule SnitchWeb.ChannelController do
 
           conn
           |> put_flash(:error, "Error creating live stream")
-          |> redirect(to: Routes.channel_path(conn, :show, channel))
+          |> redirect(to: Routes.channel_path(conn, :show, channel.slug))
       end
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    channel = Channels.get_channel!(id)
+  def show(conn, %{"channel_slug" => channel_slug}) do
+    channel = Channels.get_channel_by_slug!(channel_slug)
 
     if channel.stream_key do
       Phoenix.LiveView.Controller.live_render(conn, SnitchWeb.LiveChannelView,
@@ -83,12 +83,6 @@ defmodule SnitchWeb.ChannelController do
     else
       render(conn, "show_create_stream_key.html", channel: channel)
     end
-  end
-
-  def edit(conn, %{"id" => id}) do
-    channel = Channels.get_channel!(id)
-    changeset = Channels.change_channel(channel)
-    render(conn, "edit.html", channel: channel, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "channel" => channel_params}) do

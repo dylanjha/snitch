@@ -1,12 +1,15 @@
 <div class="page-channel-show">
   <div class="channel-show-active">
-    <h1>Welcome to <%= @channel.name %></h1>
+    <h1><span class="text-muted">Welcome to</span> <u class="text-primary"><%= @channel.name %></u></h1>
     <div class="mt-5">
-      <p class="mb-5">
-        <video width="100%" height="100%" controls>
-          <source src="<%= @playback_url %>" type="application/x-mpegURL">
-        </video>
-      </p>
+      <div class="row">
+        <div class="col-sm-12">
+          <div style="width: 100%;">
+            <video id="mux-playback" controls autoplay data-hls-src="<%= @playback_url %>">
+            </video>
+          </div>
+        <div>
+      <div>
     </div>
   </div>
 </div>
