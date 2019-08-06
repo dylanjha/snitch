@@ -82,15 +82,36 @@ defmodule Snitch.Channels do
     |> notify_subs()
   end
 
+  def update_from_mux_webhook(%Channel{} = channel, params) do
+    mux_resource = params["data"]
+    attrs = %{mux_resource: mux_resource}
+
+    attrs =
+      if params["type"] == "video.live_stream.disconnected" do
+        Map.put(attrs, :mux_disconnected_at, NaiveDateTime.from_iso8601!(params["created_at"]))
+      else
+        attrs
+      end
+
+    attrs =
+      if mux_resource["playback_ids"] do
+        playback_id = List.first(mux_resource["playback_ids"])["id"]
+        Map.put(attrs, :mux_live_playback_id, playback_id)
+      else
+        attrs
+      end
+
+    update_channel(channel, attrs)
+  end
+
   def playback_url_for_channel(%Channel{} = channel) do
     case channel.mux_resource["status"] do
       "active" ->
-        case channel.mux_resource["playback_ids"] do
+        case channel.mux_live_playback_id do
           nil ->
             nil
 
-          playback_ids ->
-            playback_id = List.first(playback_ids)["id"]
+          playback_id ->
             "https://stream.mux.com/#{playback_id}.m3u8"
         end
 

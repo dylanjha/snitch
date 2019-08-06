@@ -11,8 +11,8 @@ defmodule SnitchWeb.WebhookController do
       channel = Channels.find_by_mux_live_stream_id(mux_live_stream_id)
 
       if channel do
-        case Channels.update_channel(channel, %{mux_resource: mux_resource}) do
-          {:ok, channel} ->
+        case Channels.update_from_mux_webhook(channel, params) do
+          {:ok, _channel} ->
             json(conn, %{message: "channel updated"})
 
           {:error, %Ecto.Changeset{} = changeset} ->

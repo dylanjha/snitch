@@ -16,10 +16,11 @@ defmodule SnitchWeb.ChannelController do
 
   def create(conn, %{"channel" => channel_params}) do
     {:ok, name} = Map.fetch(channel_params, "name")
+    create_params = %{name: name}
     slug = Slugger.slugify_downcase(name)
-    channel_params = Map.put(channel_params, "slug", slug)
+    create_params = Map.put(create_params, :slug, slug)
 
-    case Channels.create_channel(channel_params) do
+    case Channels.create_channel(create_params) do
       {:ok, channel} ->
         conn
         |> put_flash(:info, "Channel created successfully.")
@@ -41,7 +42,8 @@ defmodule SnitchWeb.ChannelController do
     else
       case Mux.Video.LiveStreams.create(Mux.client(), %{
              playback_policy: "public",
-             new_asset_settings: %{playback_policy: "public"}
+             new_asset_settings: %{playback_policy: "public"},
+             reconnect_window: 20
            }) do
         {:ok, live_stream, _env} ->
           stream_key = live_stream["stream_key"]
