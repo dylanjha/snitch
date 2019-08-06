@@ -56,7 +56,6 @@ defmodule SnitchWeb.ChannelController do
                }) do
             {:ok, channel} ->
               conn
-              |> put_flash(:info, "Live stream is created")
               |> redirect(to: Routes.channel_path(conn, :show, channel.slug))
 
             {:error, %Ecto.Changeset{} = _changeset} ->
