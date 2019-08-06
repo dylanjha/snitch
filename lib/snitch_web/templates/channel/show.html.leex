@@ -1,11 +1,11 @@
 <div class="page-channel-show">
   <div class="action-box channel-show-stream-key">
-    <h1><%= @channel.name %></h1>
+    <h1><%= @name %></h1>
     <div class="mt-5">
       <p class="mb-5">
         <div class="d-flex align-items-center pt-3 pb-3">
-          <h4> <span class="badge badge-secondary"><%= @channel.mux_resource["status"] %></span></h4>
-          <%= if (@channel.mux_resource["connected"]) do %>
+          <h4> <span class="badge badge-secondary"><%= @status %></span></h4>
+          <%= if (@connected) do %>
             <div class="ml-3 spinner-border text-primary" role="status">
               <span class="sr-only">Loading...</span>
             </div>
@@ -16,7 +16,7 @@
         </div>
       </p>
       <p class="mb-5">
-        Enter these details into your streaming software. When you start streaming the content will be recorded and live right here.
+        Enter these details into your streaming software. When you start streaming the content will be recorded and live right here. Never done RTMP streaming before? <a href="https://docs.mux.com/docs/configure-broadcast-software" target="_blank">Get started</a>
       </p>
       <form>
         <div>
@@ -25,7 +25,7 @@
         </div>
         <div class="mt-4">
           <label for="stream_key">Stream Key</label>
-          <input type="text" disabled name="stream_key" value="<%= @channel.stream_key %>" class="form-control" /> </form>
+          <input type="text" disabled name="stream_key" value="<%= @stream_key %>" class="form-control" /> </form>
         </div>
       </form>
     </div>

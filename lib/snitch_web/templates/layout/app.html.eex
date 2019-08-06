@@ -9,8 +9,8 @@
     <script src='https://cdn.jsdelivr.net/npm/hls.js@v0.12.4'></script>
   </head>
   <body>
-    <nav class="navbar navbar-light bg-light">
-      <%= link "Snitch", to: "/" %>
+    <nav class="navbar fixed-top">
+      <%= link "Snitch", to: "/", class: "navbar-brand" %>
     </nav>
     <main role="main" class="container-fluid">
       <%= if get_flash(@conn, :info) do %>
