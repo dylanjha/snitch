@@ -29,5 +29,6 @@ defmodule SnitchWeb.Router do
   scope "/", SnitchWeb do
     pipe_through :api
     post "/webhooks/mux", WebhookController, :mux
+    post "/mux_webhook1", WebhookController, :mux_webhook1
   end
 end

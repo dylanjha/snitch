@@ -29,4 +29,18 @@ defmodule SnitchWeb.WebhookController do
       json(conn, %{message: "Ignoring non-live stream webhook"})
     end
   end
+
+  def mux_webhook1(conn, params) do
+    secret = "tvji2paub0ubtlitmdvmspmaji17v3p5"
+    signature_header = List.first(get_req_header(conn, "mux-signature"))
+    raw_body = List.first(conn.private[:raw_body])
+    IO.inspect(raw_body)
+    IO.inspect(signature_header)
+    case Mux.Webhooks.verify_header(raw_body, signature_header, secret, 3000) do
+      :ok ->
+        text(conn, "From Elixir: valid")
+      {:error, message} ->
+        text(conn, "From Elixir: Error: #{message}")
+    end
+  end
 end
