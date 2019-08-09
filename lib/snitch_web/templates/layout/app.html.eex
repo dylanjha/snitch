@@ -4,13 +4,16 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta property="og:image" content="<%= Routes.static_path(@conn, "/images/snitch-blog-header.png") %>" />
     <title>Snitch · Phoenix Framework</title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <script src='https://cdn.jsdelivr.net/npm/hls.js@v0.12.4'></script>
   </head>
   <body>
     <nav class="navbar fixed-top">
-      <%= link "Snitch", to: "/", class: "navbar-brand" %>
+      <%= link to: "/", class: "navbar-brand" do %>
+        <img src="<%= Routes.static_path(@conn, "/images/snitch-logo.svg") %>">
+      <% end %>
     </nav>
     <main role="main" class="container-fluid">
       <%= if get_flash(@conn, :info) do %>

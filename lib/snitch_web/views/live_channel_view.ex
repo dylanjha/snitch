@@ -11,17 +11,10 @@ defmodule SnitchWeb.LiveChannelView do
     }
   end
 
-  def render(assigns) do
-    playback_url = assigns[:playback_url]
+  def render(%{playback_url: nil} = assigns),
+    do: SnitchWeb.ChannelView.render("show.html", assigns)
 
-    case(playback_url) do
-      nil ->
-        SnitchWeb.ChannelView.render("show.html", assigns)
-
-      _ ->
-        SnitchWeb.ChannelView.render("show_active.html", assigns)
-    end
-  end
+  def render(assigns), do: SnitchWeb.ChannelView.render("show_active.html", assigns)
 
   def handle_info(channel, socket) do
     {

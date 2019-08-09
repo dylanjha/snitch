@@ -43,7 +43,7 @@ defmodule Snitch.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:mux, "~> 1.2.0"},
+      {:mux, "~> 1.4.0"},
       {:slugger, "~> 0.3"},
       {:phoenix_live_view, github: "phoenixframework/phoenix_live_view"}
     ]
