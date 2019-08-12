@@ -19,6 +19,14 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
 
+## Deploying
+
+This is a straight-forward Elixir/Phoenix application so it should be deployable like any other
+Phoenix application.
+
+Currently, the demo [snitch.world](https://snitch.world) is deployed using [gigalixir](https://gigalixir.com/). If
+you deploy there make sure you set the environment variables that are defined in `.env.sample`.
+
 ## Learn more
 
   * Official website: http://www.phoenixframework.org/
