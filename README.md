@@ -27,6 +27,9 @@ Phoenix application.
 Currently, the demo [snitch.world](https://snitch.world) is deployed using [gigalixir](https://gigalixir.com/). If
 you deploy there make sure you set the environment variables that are defined in `.env.sample`.
 
+For production you will also need to add a `HOST_NAME=` environment variable. This is the host for where the application
+is deployed, without the protocol (example: `HOST_NAME=snitch.world`)
+
 ## Learn more
 
   * Official website: http://www.phoenixframework.org/
