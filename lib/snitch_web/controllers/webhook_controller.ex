@@ -5,7 +5,7 @@ defmodule SnitchWeb.WebhookController do
 
   def mux(conn, params) do
     signature_header = List.first(get_req_header(conn, "mux-signature"))
-    raw_body = List.first(conn.private[:raw_body])
+    raw_body = List.first(conn.assigns.raw_body)
 
     case Mux.Webhooks.verify_header(
            raw_body,
