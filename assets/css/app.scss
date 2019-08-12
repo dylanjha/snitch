@@ -5,6 +5,7 @@
 
 $lavender-brush: #fff0f5;
 $aquamarine: #7fffd4;
+$break-md: 768px;
 
 .container-fluid {
   padding-right: 0;
@@ -30,17 +31,59 @@ $aquamarine: #7fffd4;
 .new-channel-form {
 }
 
-.channel-create-stream-key {
+.channel-show-active {
+  padding-top: 60px;
 }
 
 .page-channel-new {
   background: $lavender-brush;
+  background-image: url('/images/icons-bg.png');
   padding: 80px;
   min-height: 1000px;
 }
 
 .page-channel-show {
   background: $lavender-brush;
+  background-image: url('/images/icons-bg.png');
   padding: 80px;
   min-height: 1000px;
+}
+
+.mux-video-contain {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mux-tv-set {
+  background-color: black;
+  padding: 20px;
+  z-index: 3;
+  border-radius: 10px;
+}
+
+.mux-video {
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 2;
+  border-radius: 30px;
+}
+
+.mux-video-contain:after {
+  content: '';
+  background: url("/images/tv-drop-shadow.svg");
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: -15px;
+  right: 10px;
+  border-radius: 10px;
+  @media (min-width: $break-md) {
+    bottom: -30px;
+    right: 30px;
+  }
+  z-index: 1;
 }

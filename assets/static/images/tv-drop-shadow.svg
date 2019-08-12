@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="326px" height="247px" viewBox="0 0 326 247" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.3 (81716) - https://sketch.com -->
+    <title>drop-shadow</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M318.551095,266.128205 L6.60353051,266.128205 C2.95773829,266.128205 1.13686838e-13,263.163453 1.13686838e-13,259.506806 L1.13686838e-13,26.6249843 C1.13686838e-13,22.9665447 2.95773829,20 6.60353051,20 L318.551095,20 C322.196887,20 325.152838,22.9665447 325.152838,26.6249843 L325.152838,259.506806 C325.152838,263.163453 322.196887,266.128205 318.551095,266.128205" id="path-1"></path>
+        <pattern id="pattern-2" width="15.25" height="15" x="-15.25" y="5" patternUnits="userSpaceOnUse">
+            <use xlink:href="#image-3" transform="scale(0.25,0.25)"></use>
+        </pattern>
+        <image id="image-3" width="61" height="60" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD0AAAA8CAYAAADVPrJMAAAABGdBTUEAALGOfPtRkwAAArtJREFUaAXtWcFxwjAQBCb/0EHcQfyEn0tICaYyXAIl6MczTgnpgFRAdh3L2AoZdMPJRrE0c0iWlTvtnXTWRsvz+byYW1nNDTDxikFvt9vcdRT61pDM7dd81rQrAg3DFYC8oy4tILTXaBtIfW1idtw9tbbdJ+FkbJT3mAj/9AAxkFcIC9/XTUv3R9WuKNLAUUA+Wjx71ARoAe+Ox2PVvtOuCihUs7uUZu/ecrZgCTAkYOpfaNqVRrqZQOw/ItBXvP3ZOoB7vAzlDG27ItAAZSB2We/QZoLp9lpA4Kp2paBtZm72MBLXCaCLFvgXavseTdVi9erYZSKTyGazyd3x6FtDMrdf81nTrjh7q8ZvImXS5T3RNHXNJtC6/nxcbfOONA8AkCxkfKA/d/VPYbeJNA1jMgYSDT10nffXM7BVeDegw6seYJ60niG/ooE+jWL1NkfWqewSCCNdQbqjZSz0EHP2LQUG9o/KbwTNpc0SlB46R1bae+EPyth289lm79OPwxdR0cN2zjcrJ3dwfM1Il5D+mudziGKgtMsdaDOxjW4X2+ywcvZaPPQQHvMsdTvukjss/YuNHtp5+9QuLU3U0nO5RD9stp+s6CMnBZAi7eMxfOz5fR0UHgAg2aBT+UHTrijSMFwBy4CmETD6DCQaWppuLRGtW6XAgO7oiDZPO93RMhZaKj6c9JazBQvcYekhDWjaFe1pGv8PRQT6irfTrSWcUgZaCQZ67Xa6+7ZUFGkYHtC0aGmpDzXrj3FpGt/FRkvF2TvQ8h1VrXR5jzq5UMYS6FCefTS98440Dx6QLGRUoP8haGkTaQIGWAOJhh76BgfYKowd0OF0awmPXP4h7utK/3EFhk5OSxH5dGvpH7PIRzKRnVoM6dYyQDANdKrRQ8H8BnbTrWVs9LBPd2+1XTqcqKVgn0Q9dJaE4xuqbB9Nf0jBIAAAAABJRU5ErkJggg=="></image>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="snitch-blog-header" transform="translate(-417.000000, -211.000000)">
+            <g id="logo-w-bkgrd" transform="translate(417.000000, 191.000000)">
+                <g id="drop-shadow">
+                    <use fill="#C7F0E9" xlink:href="#path-1"></use>
+                    <use fill="url(#pattern-2)" xlink:href="#path-1"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
