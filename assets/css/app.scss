@@ -43,25 +43,39 @@ $break-md: 768px;
 }
 
 .navbar-brand {
-  .logo-text {
+  .logo-img-static {
+    width: 90px;
+  }
+  .logo-img-hover {
+    width: 100px;
+  }
+  @media (min-width: $break-md) {
+    padding: 20px 0 0 20px;
+    .logo-img-static {
+      width: 140px;
+    }
+    .logo-img-hover {
+      width: 150px;
+    }
+  }
+  .logo-img-static {
     position: absolute;
     opacity: 1;
     visibility: show;
     transition: visibility 0s, opacity 0.5s linear;
   }
-  .logo-img {
+  .logo-img-hover {
     position: absolute;
     opacity: 0;
     visibility: hidden;
-    width: 220px;
     transition: visibility 0s, opacity 0.5s linear;
   }
   &:hover {
-    .logo-text {
+    .logo-img-static {
       visibility: hidden;
       opacity: 0;
     }
-    .logo-img {
+    .logo-img-hover {
       visibility: visible;
       opacity: 1;
     }
@@ -115,7 +129,7 @@ $break-md: 768px;
   background: $lavender-brush;
   background-image: url('/images/icons-bg.png');
   min-height: 1000px;
-  padding: 20px 0 20px 0;
+  padding: 50px 0 20px 0;
   @media (min-width: $break-md) {
     padding: 80px;
   }

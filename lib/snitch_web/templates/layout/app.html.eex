@@ -13,8 +13,8 @@
     <nav class="navbar">
       <%= link to: "/", class: "navbar-brand"  do %>
         <div class="navbar-brand-img-container">
-          <img src="<%= Routes.static_path(@conn, "/images/snitch-logo.svg") %>" class="logo-text">
-          <img src="<%= Routes.static_path(@conn, "/images/snitch-logo-w-box.png") %>" class="logo-img">
+          <img src="<%= Routes.static_path(@conn, "/images/logo-w-box.png") %>" class="logo-img-static">
+          <img src="<%= Routes.static_path(@conn, "/images/logo-w-bkgrd.png") %>" class="logo-img-hover">
         </div>
       <% end %>
       <div class="navbar-right">
@@ -22,7 +22,7 @@
           <a href="https://mux.com/blog/phoenix-liveview-build-twitch-without-writing-javascript" class="btn btn-dark blog-btn">Read the Blog Post</a>
         </div>
         <div class="d-block d-sm-none">
-          <a href="https://mux.com/blog/phoenix-liveview-build-twitch-without-writing-javascript">Blog Post</a>
+          <a href="https://mux.com/blog/phoenix-liveview-build-twitch-without-writing-javascript" class="btn btn-dark btn-sm blog-btn">Blog Post</a>
         </div>
       </div>
     </nav>
