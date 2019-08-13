@@ -43,7 +43,7 @@ defmodule SnitchWeb.ChannelController do
              playback_policy: "public",
              test: System.get_env("ENABLE_TEST_MODE") === "true",
              new_asset_settings: %{playback_policy: "public"},
-             reconnect_window: 20
+             reconnect_window: 12
            }) do
         {:ok, live_stream, _env} ->
           stream_key = live_stream["stream_key"]
