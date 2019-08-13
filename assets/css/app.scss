@@ -44,18 +44,18 @@ $break-md: 768px;
 
 .navbar-brand {
   .logo-img-static {
-    width: 90px;
+    width: 70px;
   }
   .logo-img-hover {
-    width: 100px;
+    width: 80px;
   }
   @media (min-width: $break-md) {
     padding: 20px 0 0 20px;
     .logo-img-static {
-      width: 140px;
+      width: 100px;
     }
     .logo-img-hover {
-      width: 150px;
+      width: 110px;
     }
   }
   .logo-img-static {
