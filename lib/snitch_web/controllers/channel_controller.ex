@@ -41,7 +41,7 @@ defmodule SnitchWeb.ChannelController do
     else
       case Mux.Video.LiveStreams.create(Mux.client(), %{
              playback_policy: "public",
-             test: true,
+             test: System.get_env("ENABLE_TEST_MODE") === "true",
              new_asset_settings: %{playback_policy: "public"},
              reconnect_window: 20
            }) do
