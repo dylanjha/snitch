@@ -1,29 +1,20 @@
-<h1>Listing Channels</h1>
+<div class="page-channel-list">
+  <h1>Listing Channels</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Stream key</th>
-      <th>Name</th>
-      <th>Slug</th>
-      <th>Mux resource</th>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for channel <- @channels do %>
-    <tr>
-      <td><%= channel.stream_key %></td>
-      <td><%= channel.name %></td>
-      <td><%= channel.slug %></td>
-
-      <td>
-        <%= link "Show", to: Routes.channel_path(@conn, :show, channel.slug) %>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
-
-<span><%= link "New Channel", to: Routes.channel_path(@conn, :new) %></span>
+  <table>
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Created at</th>
+      </tr>
+    </thead>
+    <tbody>
+  <%= for channel <- @channels do %>
+      <tr>
+        <td><%= channel.mux_resource["id"] %></td>
+        <td><%= channel.inserted_at %></td>
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
+</div>

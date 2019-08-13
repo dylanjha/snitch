@@ -77,11 +77,14 @@ $break-md: 768px;
 }
 
 .action-box {
-  padding: 60px;
   width: 100%;
   background: $aquamarine;
   border-radius: 4px;
   z-index: 3;
+  padding: 30px;
+  @media (min-width: $break-md) {
+    padding: 60px;
+  }
 }
 
 .action-box-wrapper:after {
@@ -108,18 +111,19 @@ $break-md: 768px;
   padding-top: 60px;
 }
 
-.page-channel-new {
+.page-channel {
   background: $lavender-brush;
   background-image: url('/images/icons-bg.png');
-  padding: 80px;
   min-height: 1000px;
+  padding: 20px 0 20px 0;
+  @media (min-width: $break-md) {
+    padding: 80px;
+  }
 }
 
-.page-channel-show {
+.page-channel-list {
   background: $lavender-brush;
-  background-image: url('/images/icons-bg.png');
   padding: 80px;
-  min-height: 1000px;
 }
 
 .mux-video-cols {

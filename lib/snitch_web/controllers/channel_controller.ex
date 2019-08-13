@@ -23,7 +23,6 @@ defmodule SnitchWeb.ChannelController do
     case Channels.create_channel(create_params) do
       {:ok, channel} ->
         conn
-        |> put_flash(:info, "Channel created successfully.")
         |> redirect(to: Routes.channel_path(conn, :show, channel.slug))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -93,7 +92,6 @@ defmodule SnitchWeb.ChannelController do
     case Channels.update_channel(channel, channel_params) do
       {:ok, channel} ->
         conn
-        |> put_flash(:info, "Channel updated successfully.")
         |> redirect(to: Routes.channel_path(conn, :show, channel))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -106,7 +104,6 @@ defmodule SnitchWeb.ChannelController do
     {:ok, _channel} = Channels.delete_channel(channel)
 
     conn
-    |> put_flash(:info, "Channel deleted successfully.")
     |> redirect(to: Routes.channel_path(conn, :index))
   end
 end
