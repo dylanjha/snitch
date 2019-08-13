@@ -20,12 +20,37 @@ $break-md: 768px;
   font-size: 18px;
 }
 
+.action-box-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .action-box {
   padding: 60px;
-  max-width: 600px;
-  margin: 30px auto 0 auto;
+  width: 100%;
   background: $aquamarine;
   border-radius: 4px;
+  z-index: 3;
+}
+
+.action-box-wrapper:after {
+  content: '';
+  background: url(/images/tv-drop-shadow.png);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: -30px;
+  right: 30px;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.channel-create-stream-key {
+  max-width: 600px;
+  margin: 60px auto 0 auto;
 }
 
 .new-channel-form {
@@ -79,7 +104,7 @@ $break-md: 768px;
 
 .mux-video-contain:after {
   content: '';
-  background: url("/images/tv-drop-shadow.svg");
+  background: url("/images/tv-drop-shadow.png");
   position: absolute;
   width: 100%;
   height: 100%;

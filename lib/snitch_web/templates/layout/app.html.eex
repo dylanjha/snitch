@@ -11,16 +11,20 @@
   </head>
   <body>
     <nav class="navbar fixed-top">
-      <%= link to: "/", class: "navbar-brand" do %>
+      <%= link to: "/", class: "navbar-brand", data: [toggle: "popover", content: "And here's some amazing content. It's very engaging. Right?"] do %>
         <img src="<%= Routes.static_path(@conn, "/images/snitch-logo.svg") %>">
       <% end %>
     </nav>
     <main role="main" class="container-fluid">
       <%= if get_flash(@conn, :info) do %>
-        <p class="flash alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+        <div class="flash-wrapper">
+          <p class="flash alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+        </div>
       <% end %>
       <%= if get_flash(@conn, :error) do %>
-        <p class="flash alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+        <div class="flash-wrapper">
+          <p class="flash alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+        </div>
       <% end %>
       <%= render @view_module, @view_template, assigns %>
     </main>

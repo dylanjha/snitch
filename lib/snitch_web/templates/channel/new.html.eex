@@ -1,8 +1,10 @@
 <div class="page-channel-new">
-  <div class="col-sm">
-    <div class="channel-create-stream-key action-box">
-      <h1>Create a Channel</h1>
-      <%= render "form.html", Map.put(assigns, :action, Routes.channel_path(@conn, :create)) %>
+  <div class="col-sm channel-create-stream-key">
+    <div class="action-box-wrapper">
+      <div class="action-box">
+        <h1>Create a Channel</h1>
+        <%= render "form.html", Map.put(assigns, :action, Routes.channel_path(@conn, :create)) %>
+      </div>
     </div>
   </div>
 </div>
