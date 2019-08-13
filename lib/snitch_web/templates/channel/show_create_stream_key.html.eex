@@ -1,5 +1,5 @@
 <div class="page-channel-show">
-  <div class="col-sm channel-create-stream-key">
+  <div class="col-sm channel-page-col">
     <div class="action-box-wrapper">
       <div class="action-box">
         <h1><%= @channel.name %></h1>

@@ -10,10 +10,16 @@
     <script src='https://cdn.jsdelivr.net/npm/hls.js@v0.12.4'></script>
   </head>
   <body>
-    <nav class="navbar fixed-top">
-      <%= link to: "/", class: "navbar-brand", data: [toggle: "popover", content: "And here's some amazing content. It's very engaging. Right?"] do %>
-        <img src="<%= Routes.static_path(@conn, "/images/snitch-logo.svg") %>">
+    <nav class="navbar">
+      <%= link to: "/", class: "navbar-brand"  do %>
+        <div class="navbar-brand-img-container">
+          <img src="<%= Routes.static_path(@conn, "/images/snitch-logo.svg") %>" class="logo-text">
+          <img src="<%= Routes.static_path(@conn, "/images/snitch-logo-w-box.png") %>" class="logo-img">
+        </div>
       <% end %>
+      <div class="navbar-right">
+        <a href="https://mux.com/blog/phoenix-liveview-build-twitch-without-writing-javascript" class="btn btn-dark">Read the Blog Post</a>
+      </div>
     </nav>
     <main role="main" class="container-fluid">
       <%= if get_flash(@conn, :info) do %>

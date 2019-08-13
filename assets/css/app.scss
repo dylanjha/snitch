@@ -20,6 +20,54 @@ $break-md: 768px;
   font-size: 18px;
 }
 
+
+.navbar {
+  position: relative;
+  padding: 0;
+}
+
+.navbar-brand {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.navbar-brand-img-container {
+  position: relative;
+}
+
+.navbar-right {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.navbar-brand {
+  .logo-text {
+    position: absolute;
+    opacity: 1;
+    visibility: show;
+    transition: visibility 0s, opacity 0.5s linear;
+  }
+  .logo-img {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    width: 220px;
+    transition: visibility 0s, opacity 0.5s linear;
+  }
+  &:hover {
+    .logo-text {
+      visibility: hidden;
+      opacity: 0;
+    }
+    .logo-img {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
 .action-box-wrapper {
   width: 100%;
   height: 100%;
@@ -48,9 +96,9 @@ $break-md: 768px;
   z-index: 1;
 }
 
-.channel-create-stream-key {
+.channel-page-col {
   max-width: 600px;
-  margin: 60px auto 0 auto;
+  margin: 120px auto 0 auto;
 }
 
 .new-channel-form {
